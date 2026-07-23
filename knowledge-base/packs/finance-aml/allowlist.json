@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "source_of_truth_for": "allowlist.md",
+    "consumed_by": ["scripts/egress_gate.py", "scripts/common/kb_loader.py"],
+    "pack_id": "finance-aml"
+  },
+  "connectors": {
+    "AML-CONN-001": {
+      "connector_name": "Model Gateway",
+      "category": "model-gateway",
+      "module_path_pattern": "src/*/connectors/model_gateway.py",
+      "allowed_host_patterns": ["*.internal-llm-gateway.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential"
+    },
+    "AML-CONN-002": {
+      "connector_name": "Transaction Monitoring Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/transaction_monitoring_connector.py",
+      "allowed_host_patterns": ["*.txn-monitoring.internal.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential",
+      "read_only": true
+    },
+    "AML-CONN-003": {
+      "connector_name": "Case Management Connector",
+      "category": "case-management",
+      "module_path_pattern": "src/*/connectors/case_management_connector.py",
+      "allowed_host_patterns": ["*.case-mgmt.internal.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential",
+      "state_changing_actions_require_control": ["AML-CTL-004", "AML-CTL-005"]
+    },
+    "AML-CONN-004": {
+      "connector_name": "Sanctions/Watchlist Screening Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/sanctions_screening_connector.py",
+      "allowed_host_patterns": ["*.sanctions-screening.internal.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential",
+      "read_only": true
+    },
+    "AML-CONN-005": {
+      "connector_name": "KYC/Customer Master Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/kyc_connector.py",
+      "allowed_host_patterns": ["*.kyc-master.internal.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential",
+      "read_only": true,
+      "requires_control": ["AML-CTL-001"]
+    },
+    "AML-CONN-006": {
+      "connector_name": "Adverse Media Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/adverse_media_connector.py",
+      "allowed_host_patterns": ["*.adverse-media.internal.example"],
+      "approved_for_jurisdictions": ["US"],
+      "approved_for_data_classification": "Confidential",
+      "read_only": true,
+      "requires_control": ["AML-CTL-002"]
+    }
+  },
+  "explicitly_disallowed_patterns": {
+    "raw_provider_sdk_imports": ["^import openai", "^import anthropic", "^import google\\.generativeai", "^from mistralai import"],
+    "raw_db_drivers": ["psycopg2\\.connect\\(", "pymongo\\.MongoClient\\(", "sqlalchemy\\.create_engine\\("],
+    "raw_connection_strings": ["postgres://", "mongodb://", "mysql://"],
+    "raw_http_clients_outside_allowed_hosts": ["requests\\.(get|post|put|delete)\\(", "httpx\\.(Client|AsyncClient)\\("]
+  }
+}

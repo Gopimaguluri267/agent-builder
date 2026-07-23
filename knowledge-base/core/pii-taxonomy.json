@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "source_of_truth_for": "pii-taxonomy.md",
+    "consumed_by": ["scripts/validate_scope_bind.py", "scripts/common/kb_loader.py"]
+  },
+  "categories": {
+    "PII-001": { "category_name": "customer_name", "nist_impact_level": "Moderate", "redaction_treatment": "mask_in_logs_full_display_to_assigned_analyst" },
+    "PII-002": { "category_name": "ssn", "nist_impact_level": "High", "redaction_treatment": "mask_last_4_max_never_full" },
+    "PII-003": { "category_name": "account_number", "nist_impact_level": "High", "redaction_treatment": "mask_last_4_except_governed_connector_calls" },
+    "PII-004": { "category_name": "dob", "nist_impact_level": "Moderate", "redaction_treatment": "full_in_tool_redact_on_export" },
+    "PII-005": { "category_name": "address", "nist_impact_level": "Moderate", "redaction_treatment": "full_in_tool_redact_on_export" },
+    "PII-006": { "category_name": "phone_number", "nist_impact_level": "Low", "redaction_treatment": "mask_middle_digits_on_export" },
+    "PII-007": { "category_name": "email", "nist_impact_level": "Low", "redaction_treatment": "mask_local_part_on_export" },
+    "PII-008": { "category_name": "government_id_number", "nist_impact_level": "High", "redaction_treatment": "mask_last_4_never_full" },
+    "PII-009": { "category_name": "tax_id", "nist_impact_level": "High", "redaction_treatment": "mask_last_4_never_full" },
+    "PII-010": { "category_name": "employer", "nist_impact_level": "Low", "redaction_treatment": "no_redaction_required" },
+    "PII-011": { "category_name": "income", "nist_impact_level": "Moderate", "redaction_treatment": "full_in_tool_redact_on_export" },
+    "PII-012": { "category_name": "counterparty_name", "nist_impact_level": "Moderate", "redaction_treatment": "mask_in_logs_full_display_to_assigned_analyst" },
+    "PII-013": { "category_name": "ip_address", "nist_impact_level": "Low", "redaction_treatment": "full_in_tool_mask_on_export" },
+    "PII-014": { "category_name": "device_id", "nist_impact_level": "Low", "redaction_treatment": "full_in_tool_mask_on_export" }
+  }
+}

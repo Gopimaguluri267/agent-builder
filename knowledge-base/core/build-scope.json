@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "source_of_truth_for": "build-scope.md",
+    "consumed_by": ["scripts/validate_architecture.py", "scripts/common/kb_loader.py"]
+  },
+  "fields": {
+    "BS-001": {
+      "field_name": "agent_archetype",
+      "consumed_by": ["architecture-recommender", "codegen-agent"],
+      "allowed_values": {
+        "single-agent": { "status": "supported" },
+        "multi-agent": { "status": "planned" }
+      },
+      "validation_rule": { "rule_type": "status_must_be_supported" }
+    },
+    "BS-002": {
+      "field_name": "pattern",
+      "consumed_by": ["architecture-recommender", "codegen-agent"],
+      "allowed_values": {
+        "tool-calling": { "status": "supported" },
+        "react": { "status": "supported" },
+        "rag": { "status": "supported" },
+        "reflection": { "status": "planned" }
+      },
+      "validation_rule": { "rule_type": "status_must_be_supported" }
+    },
+    "BS-003": {
+      "field_name": "memory",
+      "consumed_by": ["architecture-recommender", "codegen-agent"],
+      "allowed_values": {
+        "none": { "status": "supported" },
+        "short": { "status": "supported" },
+        "long": { "status": "planned" }
+      },
+      "validation_rule": { "rule_type": "status_must_be_supported" }
+    },
+    "BS-004": {
+      "field_name": "framework",
+      "consumed_by": ["codegen-agent", "egress_gate.py"],
+      "allowed_values": {
+        "langgraph": { "status": "supported", "template_path": "templates/agent-scaffold/langgraph/" },
+        "plain-python": { "status": "planned", "template_path": null },
+        "google-adk": { "status": "planned", "template_path": null },
+        "openai-agents-sdk": { "status": "planned", "template_path": null }
+      },
+      "validation_rule": { "rule_type": "status_must_be_supported" }
+    },
+    "BS-005": {
+      "field_name": "deployment_platform",
+      "consumed_by": ["iac-generator"],
+      "allowed_values": {
+        "containerized": { "status": "supported" },
+        "serverless": { "status": "planned" }
+      },
+      "validation_rule": { "rule_type": "status_must_be_supported" }
+    }
+  }
+}

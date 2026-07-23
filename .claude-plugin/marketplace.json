@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "agent-builder-dev",
+  "owner": { "name": "Gopimaguluri267", "email": "gopimaguluri999@gmail.com" },
+  "description": "Local dev marketplace for testing the agent-builder plugin before publishing it elsewhere.",
+  "plugins": [
+    { "name": "agent-builder", "source": "./", "description": "Generates production-grade, governed agentic systems for regulated industries." }
+  ]
+}

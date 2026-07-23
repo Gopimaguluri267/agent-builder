@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "source_of_truth_for": "controls-catalog.md",
+    "consumed_by": ["agents/governance-validator.md", "scripts/common/kb_loader.py"],
+    "pack_id": "finance-aml"
+  },
+  "controls": {
+    "AML-CTL-001": {
+      "control_name": "PII Redaction",
+      "guardrail_module": "guardrails/pii_redaction.py",
+      "maps_to_regime_rule": [],
+      "enforcement_point": "pre-output",
+      "severity_floor": "high",
+      "non_negotiable": false
+    },
+    "AML-CTL-002": {
+      "control_name": "Prompt Injection Detection",
+      "guardrail_module": "guardrails/prompt_injection_detection.py",
+      "maps_to_regime_rule": ["FIN-AML-R006"],
+      "enforcement_point": "post-tool",
+      "severity_floor": "high",
+      "non_negotiable": false
+    },
+    "AML-CTL-003": {
+      "control_name": "Escalation Policy",
+      "guardrail_module": "guardrails/escalation_policy.py",
+      "maps_to_regime_rule": ["FIN-AML-R005", "FIN-AML-R006"],
+      "enforcement_point": "pre-output",
+      "severity_floor": "high",
+      "non_negotiable": false
+    },
+    "AML-CTL-004": {
+      "control_name": "Human Approval Gate: SAR Filing",
+      "guardrail_module": "guardrails/human_approval_required.py",
+      "maps_to_regime_rule": ["FIN-AML-R001"],
+      "enforcement_point": "approval-gate",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "AML-CTL-005": {
+      "control_name": "Human Approval Gate: Case Closure",
+      "guardrail_module": "guardrails/human_approval_required.py",
+      "maps_to_regime_rule": ["FIN-AML-R002"],
+      "enforcement_point": "approval-gate",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "AML-CTL-006": {
+      "control_name": "Tipping-Off Output Guard",
+      "guardrail_module": "guardrails/escalation_policy.py",
+      "maps_to_regime_rule": ["FIN-AML-R003"],
+      "enforcement_point": "pre-output",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "AML-CTL-007": {
+      "control_name": "Filing-Deadline Tracking",
+      "guardrail_module": "guardrails/escalation_policy.py",
+      "maps_to_regime_rule": ["FIN-AML-R004"],
+      "enforcement_point": "periodic",
+      "severity_floor": "high",
+      "non_negotiable": false
+    }
+  }
+}

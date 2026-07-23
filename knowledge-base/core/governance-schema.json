@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "source_of_truth_for": "governance-schema.md",
+    "consumed_by": ["scripts/common/kb_loader.py", "scripts/validate_scope_bind.py"],
+    "pack_may_set_floor_for": ["risk_tier", "data_classification"],
+    "pack_may_restrict": ["jurisdictions"],
+    "pack_may_extend_taxonomy": ["pii_data"],
+    "pack_may_not": ["remove_or_redefine_fields", "add_new_top_level_fields", "weaken_validation_rules"]
+  },
+  "fields": {
+    "GOV-001": {
+      "field_name": "data_classification",
+      "type": "enum",
+      "ordinal": true,
+      "allowed_values": ["Public", "Internal", "Confidential", "Restricted"],
+      "consumed_by": ["scope-and-bind", "architecture-recommender", "codegen-agent", "egress_gate.py"],
+      "validation_rule": {
+        "rule_type": "enum_membership",
+        "pack_floor_supported": true
+      },
+      "prompt_directive": "This system handles data classified as **{data_classification}**. Handle it accordingly: never output Restricted/Confidential data to a channel or party not explicitly authorized for that classification, and never lower the effective classification of data by omission or paraphrase that removes its sensitivity markers."
+    },
+    "GOV-002": {
+      "field_name": "jurisdictions",
+      "type": "enum_multiselect",
+      "allowed_values": ["US", "EU", "UK"],
+      "consumed_by": ["scope-and-bind", "requirements-analyst", "pack-content-selection"],
+      "validation_rule": {
+        "rule_type": "nonempty_subset"
+      },
+      "prompt_directive": "This deployment operates under the following jurisdiction(s): **{jurisdictions}**. Apply jurisdiction-specific rules and terminology accordingly — do not assume rules from one jurisdiction apply to another."
+    },
+    "GOV-003": {
+      "field_name": "approved_models",
+      "type": "enum_multiselect",
+      "allowed_values": ["Claude", "GPT-4o", "Gemini"],
+      "consumed_by": ["architecture-recommender", "codegen-agent", "egress_gate.py"],
+      "validation_rule": {
+        "rule_type": "nonempty_subset_with_connector_match",
+        "connector_category": "model-gateway"
+      },
+      "prompt_directive": null
+    },
+    "GOV-004": {
+      "field_name": "risk_tier",
+      "type": "enum",
+      "ordinal": true,
+      "allowed_values": ["Low", "Medium", "High"],
+      "consumed_by": ["all pipeline steps from architecture design onward", "governance-validator"],
+      "validation_rule": {
+        "rule_type": "enum_membership",
+        "pack_floor_supported": true,
+        "override_requires_justification": true
+      },
+      "prompt_directive": "This agent operates under a **{risk_tier}** risk tier. {risk_tier_behavior}"
+    },
+    "GOV-005": {
+      "field_name": "pii_data",
+      "type": "open_taxonomy",
+      "taxonomy_source": "core/pii-taxonomy.json",
+      "consumed_by": ["prompt-engineer", "egress_gate.py"],
+      "validation_rule": {
+        "rule_type": "taxonomy_membership_subset",
+        "taxonomy_source": "pii-taxonomy.json"
+      },
+      "prompt_directive": "This agent will encounter the following categories of PII: **{pii_data}**. Never include these in full, unredacted form in any output unless the specific recipient and channel is explicitly authorized to receive unredacted PII for that category — treat this as a hard constraint, not a style preference."
+    }
+  }
+}

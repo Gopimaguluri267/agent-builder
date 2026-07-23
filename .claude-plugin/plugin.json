@@ -1,0 +1,9 @@
+{
+  "name": "agent-builder",
+  "displayName": "Agent Builder",
+  "version": "0.1.0",
+  "description": "Takes a business requirement and generates a production-grade, governed agentic system for regulated industries — starting with a credit card blocking/replacement agent for finance, with an AML transaction-monitoring pack also available.",
+  "author": { "name": "Gopimaguluri267", "email": "gopimaguluri999@gmail.com" },
+  "keywords": ["agent-generation", "compliance", "governance", "finance", "card-servicing", "aml", "regulated-industries"],
+  "license": "UNLICENSED"
+}

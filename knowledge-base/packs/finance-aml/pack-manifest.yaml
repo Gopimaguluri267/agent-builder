@@ -1,0 +1,33 @@
+pack_id: finance-aml
+pack_name: "Finance — AML Transaction Monitoring & SAR Support"
+version: "0.1.0"
+extends: core
+domain: finance
+sub_domain: aml
+
+governance_floors:
+  risk_tier: High          # see core/risk-tiers.md; override requires logged justification (core/governance-schema.json GOV-004)
+  data_classification: Confidential
+
+jurisdictions_supported:
+  - US    # regime-rules.md content is grounded in US BSA/FinCEN sources (see citations in that file)
+          # EU (AMLD5) / UK (MLR 2017) equivalents are not yet researched/written — see "Open Gaps" below
+
+files:
+  regime_rules: regime-rules.md
+  controls_catalog_md: controls-catalog.md
+  controls_catalog_json: controls-catalog.json
+  allowlist_md: allowlist.md
+  allowlist_json: allowlist.json
+
+description: >
+  Knowledge base pack for an AML (Anti-Money-Laundering) transaction-monitoring
+  and SAR (Suspicious Activity Report)-support agent. The agent investigates
+  flagged transactions, gathers evidence, and drafts SAR narratives, but is
+  barred from autonomously filing a SAR, closing a case, or notifying a
+  customer/counterparty that they are under investigation ("tipping off").
+  Every such action requires a logged human-approval gate. See regime-rules.md
+  for the specific requirements and their sources.
+
+open_gaps:
+  - "EU (AMLD5) and UK (MLR 2017) jurisdiction-specific rules not yet researched or written — regime-rules.md currently covers US BSA/FinCEN only, even though core/governance-schema.md's jurisdictions field allows EU/UK selection. A project declaring jurisdictions: [EU] or [UK] against this pack should be flagged by validate_scope_bind.py as under-covered until this gap is closed."
