@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Functional Requirements Document — {{AGENT_NAME}}</title>
+<style>
+{{INLINE_STYLES}}
+</style>
+</head>
+<body>
+<div class="abd-page">
+
+  <!-- Document-control block — DOC-STD-004 in core/documentation-standards.md -->
+  <div class="abd-control-block">
+    <table>
+      <tr>
+        <td class="abd-label">Document</td><td>Functional Requirements Document (FRD) — v{{VERSION}}</td>
+        <td class="abd-label">Status</td><td><span class="abd-status-badge abd-status-{{STATUS}}">{{STATUS_LABEL}}</span></td>
+      </tr>
+      <tr>
+        <td class="abd-label">Project</td><td>{{PROJECT_ID}} (run {{RUN_ID}})</td>
+        <td class="abd-label">Prepared by</td><td>{{PREPARED_BY}}</td>
+      </tr>
+      <tr>
+        <td class="abd-label">Vertical / Usecase</td><td>{{VERTICAL_NAME}} / {{USECASE_NAME}}</td>
+        <td class="abd-label">Date Prepared</td><td>{{DATE_PREPARED}}</td>
+      </tr>
+      <tr>
+        <td class="abd-label">Regulatory References</td>
+        <td colspan="3" class="abd-reg-refs">{{REGULATORY_REFERENCES_HTML}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <h1 class="abd-title">{{AGENT_NAME}}</h1>
+  <p class="abd-subtitle">Functional Requirements Document</p>
+
+  <h2 class="abd-section">Use Cases</h2>
+  <!-- One abd-subsection per use case/scenario, narrative form per user role -->
+  {{USE_CASES_HTML}}
+
+  <h2 class="abd-section">Features</h2>
+  {{FEATURES_HTML}}
+
+  <h2 class="abd-section">Validation Rules</h2>
+  <!-- Render as a table: Rule | Enforcement Point | Reference (usecase-rules.md / controls-catalog.json IDs via abd-ref) -->
+  {{VALIDATION_RULES_HTML}}
+
+  <h2 class="abd-section">Workflows</h2>
+  <!-- Step-by-step; explicitly mark any human-approval-gate interrupt point -->
+  {{WORKFLOWS_HTML}}
+
+  <h2 class="abd-section">Data Requirements</h2>
+  <!-- Render as a table: Data Element | Read/Write | Connector (allowlist.json ID via abd-ref) | Classification (core/pii-taxonomy.md category if applicable) -->
+  {{DATA_REQUIREMENTS_HTML}}
+
+  <!-- Sign-Off section — DOC-STD-004 -->
+  <div class="abd-signoff {{SIGNOFF_STATE_CLASS}}">
+    <h2 class="abd-section">Sign-Off</h2>
+    <p class="abd-signoff-statement">{{AFFIRMATION_STATEMENT}}</p>
+    <div class="abd-signoff-fields">
+      <table>
+        <tr><td class="abd-label">Approver Name</td><td class="abd-value">{{APPROVER_NAME}}</td></tr>
+        <tr><td class="abd-label">Approver Role</td><td class="abd-value">{{APPROVER_ROLE}}</td></tr>
+        <tr><td class="abd-label">Signed At</td><td class="abd-value">{{SIGNED_AT}}</td></tr>
+        <tr><td class="abd-label">Evidence Hash</td><td class="abd-value abd-evidence-hash">{{EVIDENCE_HASH}}</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

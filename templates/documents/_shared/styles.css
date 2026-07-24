@@ -1,0 +1,148 @@
+/* Agent Builder — shared styling for generated BRD/PRD/FRD documents.
+   Self-contained, no external requests. Designed for on-screen review AND
+   print/PDF (leadership will often print or export these) — see @media print
+   rules at the bottom. Maintained by skills/document-rendering/SKILL.md. */
+
+:root {
+  --abd-ink: #1a1f2b;
+  --abd-ink-soft: #4a5164;
+  --abd-border: #d8dce3;
+  --abd-bg: #ffffff;
+  --abd-bg-subtle: #f6f7f9;
+  --abd-accent: #1f4b8f;
+  --abd-accent-soft: #eef3fb;
+
+  /* Verdict / status colors — reuse the plugin's own block/hold/ship_with_conditions/ship vocabulary */
+  --abd-verdict-block-bg: #fbe9e9;
+  --abd-verdict-block-fg: #9a2626;
+  --abd-verdict-hold-bg: #fbf1de;
+  --abd-verdict-hold-fg: #8a5a10;
+  --abd-verdict-conditions-bg: #e8eefb;
+  --abd-verdict-conditions-fg: #1f4b8f;
+  --abd-verdict-ship-bg: #e7f4ea;
+  --abd-verdict-ship-fg: #226a37;
+
+  /* Document status (document_type's own draft/pending_signoff/signed lifecycle) */
+  --abd-status-draft-bg: #eceff3;
+  --abd-status-draft-fg: #4a5164;
+  --abd-status-pending-bg: #fbf1de;
+  --abd-status-pending-fg: #8a5a10;
+  --abd-status-signed-bg: #e7f4ea;
+  --abd-status-signed-fg: #226a37;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--abd-bg-subtle);
+  color: var(--abd-ink);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+  font-size: 15px;
+}
+
+.abd-page {
+  max-width: 880px;
+  margin: 2.5rem auto;
+  background: var(--abd-bg);
+  border: 1px solid var(--abd-border);
+  border-radius: 6px;
+  padding: 3rem 3.5rem 4rem;
+}
+
+/* Document-control header — DOC-STD-004 */
+.abd-control-block {
+  border: 1px solid var(--abd-border);
+  border-radius: 6px;
+  background: var(--abd-bg-subtle);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.85rem;
+}
+.abd-control-block table { width: 100%; border-collapse: collapse; }
+.abd-control-block td { padding: 0.25rem 0.5rem 0.25rem 0; vertical-align: top; }
+.abd-control-block td.abd-label { color: var(--abd-ink-soft); white-space: nowrap; width: 1%; padding-right: 1rem; }
+.abd-control-block .abd-reg-refs code {
+  display: inline-block;
+  margin: 0.15rem 0.3rem 0.15rem 0;
+  padding: 0.1rem 0.4rem;
+  background: var(--abd-accent-soft);
+  color: var(--abd-accent);
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.abd-status-badge, .abd-verdict-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.abd-status-draft { background: var(--abd-status-draft-bg); color: var(--abd-status-draft-fg); }
+.abd-status-pending_signoff { background: var(--abd-status-pending-bg); color: var(--abd-status-pending-fg); }
+.abd-status-signed { background: var(--abd-status-signed-bg); color: var(--abd-status-signed-fg); }
+.abd-verdict-block { background: var(--abd-verdict-block-bg); color: var(--abd-verdict-block-fg); }
+.abd-verdict-hold { background: var(--abd-verdict-hold-bg); color: var(--abd-verdict-hold-fg); }
+.abd-verdict-ship_with_conditions { background: var(--abd-verdict-conditions-bg); color: var(--abd-verdict-conditions-fg); }
+.abd-verdict-ship { background: var(--abd-verdict-ship-bg); color: var(--abd-verdict-ship-fg); }
+
+h1.abd-title { font-size: 1.65rem; margin: 0 0 0.25rem; }
+.abd-subtitle { color: var(--abd-ink-soft); margin: 0 0 2rem; font-size: 0.95rem; }
+
+h2.abd-section {
+  font-size: 1.05rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--abd-accent);
+  color: var(--abd-accent);
+}
+h3.abd-subsection { font-size: 0.95rem; margin: 1.25rem 0 0.5rem; }
+
+.abd-page p { margin: 0 0 0.9rem; }
+.abd-page ul, .abd-page ol { margin: 0 0 0.9rem; padding-left: 1.4rem; }
+.abd-page li { margin-bottom: 0.35rem; }
+
+table.abd-table { width: 100%; border-collapse: collapse; margin: 0.75rem 0 1.25rem; font-size: 0.9rem; }
+table.abd-table th, table.abd-table td {
+  border: 1px solid var(--abd-border);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+table.abd-table th { background: var(--abd-bg-subtle); font-weight: 600; }
+
+.abd-ref { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.85em; color: var(--abd-accent); }
+
+.abd-open-question {
+  border-left: 3px solid var(--abd-verdict-hold-fg);
+  background: var(--abd-verdict-hold-bg);
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 0.75rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Sign-Off section — DOC-STD-004 */
+.abd-signoff {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--abd-ink);
+}
+.abd-signoff h2.abd-section { border-bottom-color: var(--abd-ink); color: var(--abd-ink); }
+.abd-signoff-statement { font-style: italic; margin-bottom: 1.25rem; }
+.abd-signoff-fields table { width: 100%; border-collapse: collapse; }
+.abd-signoff-fields td { padding: 0.5rem 0.5rem 0.5rem 0; border-bottom: 1px solid var(--abd-border); }
+.abd-signoff-fields td.abd-label { width: 160px; color: var(--abd-ink-soft); font-size: 0.85rem; }
+.abd-signoff-unsigned .abd-signoff-fields td.abd-value { color: var(--abd-ink-soft); font-style: italic; }
+.abd-evidence-hash { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; color: var(--abd-ink-soft); word-break: break-all; }
+
+@media print {
+  body { background: var(--abd-bg); }
+  .abd-page { border: none; border-radius: 0; box-shadow: none; margin: 0; max-width: none; padding: 0; }
+  .abd-control-block, .abd-signoff { break-inside: avoid; }
+  h2.abd-section { break-after: avoid; }
+}
