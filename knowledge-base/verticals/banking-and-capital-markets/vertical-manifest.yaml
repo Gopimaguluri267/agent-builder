@@ -1,0 +1,32 @@
+vertical_id: banking-and-capital-markets
+vertical_name: "Banking & Capital Markets"
+version: "0.1.0"
+extends: core
+description: >
+  Industry-wide standards, regulatory citations, model risk management
+  guidance, and the approved model catalog for agentic systems operating in
+  retail/commercial banking and capital markets contexts. Individual use
+  cases (see usecases/) reference this layer instead of re-deriving the
+  same regulatory content — a use case should only contain what's genuinely
+  specific to its own workflow.
+
+primary_regulators:
+  - Federal Reserve
+  - OCC (Office of the Comptroller of the Currency)
+  - FDIC
+  - CFPB (Consumer Financial Protection Bureau)
+  - FTC (Federal Trade Commission) — GLBA Safeguards Rule enforcement
+  - SEC / FINRA — capital markets side, not yet researched in depth
+
+files:
+  regulatory_landscape: regulatory-landscape.md
+  model_risk_management: model-risk-management.md
+  model_catalog_md: model-catalog.md
+  model_catalog_json: model-catalog.json
+  technical_standards: technical-standards.md
+
+usecases_dir: usecases/
+
+open_gaps:
+  - "Capital markets-specific regulation (SEC/FINRA trading rules, Reg NMS, market-making/best-execution obligations, etc.) not yet researched — this vertical pack is currently weighted toward retail/commercial banking regulatory content (BSA/AML, PCI-DSS, GLBA, Reg E/TILA/FCBA, Reg B/ECOA, UDAAP, FFIEC) since that's what the existing use case needs."
+  - "EU/UK equivalents (e.g. PSD2, EU AMLD5, UK MLR 2017) not yet researched — regulatory-landscape.md currently covers US federal regulation only."

@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "source_of_truth_for": "controls-catalog.md",
+    "consumed_by": ["agents/governance-validator.md", "scripts/common/kb_loader.py"],
+    "usecase_id": "REPLACE_ME",
+    "vertical_id": "banking-and-capital-markets"
+  },
+  "controls": {
+    "PREFIX-CTL-001": {
+      "control_name": "REPLACE_ME",
+      "guardrail_module": "guardrails/REPLACE_ME.py",
+      "maps_to_usecase_rule": ["REPLACE_ME"],
+      "references_vertical": [],
+      "enforcement_point": "REPLACE_ME",
+      "severity_floor": "REPLACE_ME",
+      "non_negotiable": false
+    }
+  }
+}

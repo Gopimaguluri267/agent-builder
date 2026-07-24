@@ -1,0 +1,26 @@
+usecase_id: REPLACE_ME
+usecase_name: "REPLACE_ME — human-readable name"
+version: "0.1.0"
+extends: verticals/banking-and-capital-markets
+
+governance_floors:
+  risk_tier: REPLACE_ME             # Low / Medium / High — set honestly for THIS usecase's actual risk shape
+  data_classification: REPLACE_ME
+
+depends_on:
+  vertical_files:
+    - REPLACE_ME   # e.g. regulatory-landscape.md (BCM-REG-### IDs you'll reference)
+
+files:
+  usecase_rules: usecase-rules.md
+  controls_catalog_md: controls-catalog.md
+  controls_catalog_json: controls-catalog.json
+  allowlist_md: allowlist.md
+  allowlist_json: allowlist.json
+
+description: >
+  REPLACE_ME — what this agent does, who uses it, what it's barred from
+  doing autonomously. Model this on card-blocking-servicing's manifest.
+
+open_gaps:
+  - "REPLACE_ME"

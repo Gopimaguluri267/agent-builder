@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "source_of_truth_for": "model-catalog.md",
+    "consumed_by": ["scripts/validate_scope_bind.py", "scripts/common/kb_loader.py"],
+    "vertical_id": "banking-and-capital-markets",
+    "snapshot_date": "2026-07-24",
+    "disclaimer": "Compliance attributes are a research snapshot, not a live feed. Always verify current certification status directly with the vendor before relying on any entry here."
+  },
+  "data_classification_order": ["Public", "Internal", "Confidential", "Restricted"],
+  "models": {
+    "MODEL-001": {
+      "provider": "Anthropic",
+      "model_family": "Claude",
+      "governance_schema_value": "Claude",
+      "compliance_attributes": {
+        "soc2_type2": "reported",
+        "iso_27001": "reported",
+        "iso_42001": "reported",
+        "fedramp_level": "unconfirmed",
+        "pci_dss_v4": "unconfirmed",
+        "data_residency_options": "unconfirmed",
+        "zero_data_retention_available": "reported"
+      },
+      "minimum_eligible_data_classification": "Confidential",
+      "last_verified": "2026-07-24",
+      "vendor_confirmed": false
+    },
+    "MODEL-002": {
+      "provider": "Google",
+      "model_family": "Gemini (Vertex AI)",
+      "governance_schema_value": "Gemini",
+      "compliance_attributes": {
+        "soc2_type2": "reported",
+        "iso_27001": "unconfirmed",
+        "iso_42001": "reported",
+        "fedramp_level": "high_reported",
+        "pci_dss_v4": "reported",
+        "data_residency_options": "reported_eu",
+        "zero_data_retention_available": "unconfirmed"
+      },
+      "minimum_eligible_data_classification": "Restricted",
+      "last_verified": "2026-07-24",
+      "vendor_confirmed": false
+    },
+    "MODEL-003": {
+      "provider": "OpenAI",
+      "model_family": "GPT",
+      "governance_schema_value": "GPT-4o",
+      "compliance_attributes": {
+        "soc2_type2": "reported",
+        "iso_27001": "reported",
+        "iso_42001": "unconfirmed",
+        "fedramp_level": "unconfirmed",
+        "pci_dss_v4": "unconfirmed",
+        "data_residency_options": "reported_eu",
+        "zero_data_retention_available": "reported"
+      },
+      "minimum_eligible_data_classification": "Confidential",
+      "last_verified": "2026-07-24",
+      "vendor_confirmed": false
+    }
+  }
+}

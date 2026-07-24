@@ -1,0 +1,21 @@
+vertical_id: wealth-and-asset-management
+vertical_name: "Wealth & Asset Management"
+version: "0.0.0"
+extends: core
+status: placeholder   # not yet built out — no regulatory-landscape.md, model-risk-management.md, technical-standards.md, or model-catalog.md exist yet
+
+description: >
+  Placeholder for a future vertical covering investment advisory, portfolio
+  management, and wealth management agentic systems. Not yet researched.
+  When building this out, follow the pattern established in
+  ../banking-and-capital-markets/ — real citations, disclaimers, ID-prefixed
+  entries, MD+JSON pairing only where a script parses the content.
+
+likely_relevant_regulators_not_yet_researched:
+  - SEC (Investment Advisers Act of 1940)
+  - FINRA
+  - DOL fiduciary rules
+
+files: {}   # populate once the vertical is actually built out
+
+usecases_dir: usecases/

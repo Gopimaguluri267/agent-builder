@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "source_of_truth_for": "controls-catalog.md",
+    "consumed_by": ["agents/governance-validator.md", "scripts/common/kb_loader.py"],
+    "usecase_id": "card-blocking-servicing",
+    "vertical_id": "banking-and-capital-markets"
+  },
+  "controls": {
+    "CARD-CTL-001": {
+      "control_name": "PAN Masking",
+      "guardrail_module": "guardrails/pii_redaction.py",
+      "maps_to_usecase_rule": ["CARD-UC-R004"],
+      "references_vertical": ["BCM-TECH-001"],
+      "enforcement_point": "pre-output",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "CARD-CTL-002": {
+      "control_name": "Liability Disclosure & Report-Timestamp Logging",
+      "guardrail_module": "audit/audit_log.py",
+      "maps_to_usecase_rule": ["CARD-UC-R003"],
+      "references_vertical": ["BCM-REG-006"],
+      "enforcement_point": "pre-output",
+      "severity_floor": "high",
+      "non_negotiable": false
+    },
+    "CARD-CTL-003": {
+      "control_name": "Identity Verification Gate",
+      "guardrail_module": "guardrails/escalation_policy.py",
+      "maps_to_usecase_rule": ["CARD-UC-R001"],
+      "references_vertical": ["BCM-REG-004", "BCM-TECH-003"],
+      "enforcement_point": "pre-tool",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "CARD-CTL-004": {
+      "control_name": "Autonomous Protective Action (Block / Reissue-to-File)",
+      "guardrail_module": "tools.py",
+      "maps_to_usecase_rule": ["CARD-UC-R002", "CARD-UC-R006"],
+      "references_vertical": [],
+      "enforcement_point": "n/a",
+      "severity_floor": "medium",
+      "non_negotiable": false,
+      "note": "documents an intentional absence of a human_approval_required gate"
+    },
+    "CARD-CTL-005": {
+      "control_name": "Human Approval Gate: Reissue-to-New-Address",
+      "guardrail_module": "guardrails/human_approval_required.py",
+      "maps_to_usecase_rule": ["CARD-UC-R005"],
+      "references_vertical": ["BCM-REG-004", "BCM-TECH-003"],
+      "enforcement_point": "approval-gate",
+      "severity_floor": "blocker",
+      "non_negotiable": true
+    },
+    "CARD-CTL-006": {
+      "control_name": "Prompt Injection / Social Engineering Resistance",
+      "guardrail_module": "guardrails/prompt_injection_detection.py",
+      "maps_to_usecase_rule": ["CARD-UC-R001", "CARD-UC-R005"],
+      "references_vertical": [],
+      "references_core": ["AIGF-004"],
+      "enforcement_point": "pre-tool",
+      "severity_floor": "high",
+      "non_negotiable": false
+    }
+  }
+}

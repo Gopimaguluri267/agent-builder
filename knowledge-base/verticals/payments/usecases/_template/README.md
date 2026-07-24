@@ -1,0 +1,3 @@
+# Usecase Template — Payments (placeholder vertical)
+
+This vertical isn't built out yet — `../vertical-manifest.yaml` has no `regulatory-landscape.md`, `model-risk-management.md`, `technical-standards.md`, or `model-catalog.md`. Before bootstrapping a usecase here, build those out first, following the pattern in `../../banking-and-capital-markets/` (real research, inline citations, disclaimers, ID-prefixed entries) — and resolve the PCI-DSS overlap question noted in `../vertical-manifest.yaml` before duplicating any card-data-handling content that already exists under `../../banking-and-capital-markets/technical-standards.md`. Once the vertical layer exists, copy `../../banking-and-capital-markets/usecases/_template/` for the usecase-level bootstrap steps.

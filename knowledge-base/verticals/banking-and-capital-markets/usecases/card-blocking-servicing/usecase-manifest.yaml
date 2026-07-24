@@ -1,0 +1,44 @@
+usecase_id: card-blocking-servicing
+usecase_name: "Credit Card Blocking & Replacement Servicing"
+version: "0.2.0"   # bumped from the old finance-card-servicing pack — thinned to reference the vertical layer instead of duplicating regulatory content
+extends: verticals/banking-and-capital-markets
+
+governance_floors:
+  risk_tier: Medium       # lower than a typical banking floor — the core action (blocking) is protective and reversible;
+                           # risk concentrates in one specific sub-action (reissue-to-new-address), handled via a
+                           # non_negotiable control in controls-catalog.json rather than a blanket High floor.
+  data_classification: Confidential
+
+depends_on:
+  vertical_files:
+    - regulatory-landscape.md   # BCM-REG-004 (FFIEC auth), BCM-REG-006 (TILA/FCBA)
+    - technical-standards.md    # BCM-TECH-001 (PAN masking), BCM-TECH-003 (layered auth)
+    - model-catalog.md          # approved_models eligibility check
+
+files:
+  usecase_rules: usecase-rules.md
+  controls_catalog_md: controls-catalog.md
+  controls_catalog_json: controls-catalog.json
+  allowlist_md: allowlist.md
+  allowlist_json: allowlist.json
+
+description: >
+  A customer-facing, self-service agent for reporting a lost/stolen credit
+  card. Once identity is verified, the agent blocks the card immediately (no
+  approval gate needed — protective, reversible action), discloses the
+  customer's liability protection under the vertical's TILA/FCBA citation,
+  and can arrange a replacement to the address on file. Reissuing to a NEW
+  address is the one action gated behind human approval / step-up
+  verification, since it's a known account-takeover vector. See
+  usecase-rules.md for what's specific to this workflow, and
+  ../../regulatory-landscape.md / ../../technical-standards.md for the
+  vertical-wide regulatory grounding this usecase builds on.
+
+superseded_from: >
+  This replaces the earlier, self-contained finance-card-servicing pack
+  (preserved at ignore_dir/knowledge-base-packs-v1/finance-card-servicing/),
+  which duplicated PCI-DSS/TILA/FFIEC content that now lives at the vertical
+  layer instead.
+
+open_gaps:
+  - "Debit cards / Regulation E (see regulatory-landscape.md BCM-REG-005) not covered — this usecase is credit-card-specific (BCM-REG-006)."

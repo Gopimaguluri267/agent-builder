@@ -1,0 +1,18 @@
+vertical_id: REPLACE_ME
+vertical_name: "REPLACE_ME — human-readable name, correct industry-standard term"
+version: "0.0.0"
+extends: core
+status: placeholder   # flip to "active" once regulatory-landscape.md etc. actually exist
+
+description: >
+  REPLACE_ME
+
+primary_regulators:
+  - REPLACE_ME
+
+files: {}   # populate with regulatory_landscape/model_risk_management/model_catalog_md/model_catalog_json/technical_standards once built out
+
+usecases_dir: usecases/
+
+open_gaps:
+  - "REPLACE_ME — be explicit about what isn't researched yet"

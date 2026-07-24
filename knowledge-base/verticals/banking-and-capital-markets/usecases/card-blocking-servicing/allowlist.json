@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "source_of_truth_for": "allowlist.md",
+    "consumed_by": ["scripts/egress_gate.py", "scripts/common/kb_loader.py"],
+    "usecase_id": "card-blocking-servicing",
+    "vertical_id": "banking-and-capital-markets"
+  },
+  "connectors": {
+    "CARD-CONN-001": {
+      "connector_name": "Model Gateway",
+      "category": "model-gateway",
+      "module_path_pattern": "src/*/connectors/model_gateway.py",
+      "allowed_host_patterns": ["*.internal-llm-gateway.example"],
+      "eligibility_source": "../../model-catalog.json"
+    },
+    "CARD-CONN-002": {
+      "connector_name": "Identity Verification Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/identity_verification_connector.py",
+      "allowed_host_patterns": ["*.identity-verification.internal.example"],
+      "read_only": true
+    },
+    "CARD-CONN-003": {
+      "connector_name": "Card Management Connector",
+      "category": "case-management",
+      "module_path_pattern": "src/*/connectors/card_management_connector.py",
+      "allowed_host_patterns": ["*.card-mgmt.internal.example"],
+      "state_changing_actions_require_control": {
+        "reissue_to_new_address": ["CARD-CTL-005"],
+        "block": [],
+        "reissue_to_address_on_file": []
+      }
+    },
+    "CARD-CONN-004": {
+      "connector_name": "Customer Master Connector",
+      "category": "data-source",
+      "module_path_pattern": "src/*/connectors/customer_master_connector.py",
+      "allowed_host_patterns": ["*.customer-master.internal.example"],
+      "read_only": true,
+      "requires_control": ["CARD-CTL-001"]
+    },
+    "CARD-CONN-005": {
+      "connector_name": "Notification Connector",
+      "category": "communication",
+      "module_path_pattern": "src/*/connectors/notification_connector.py",
+      "allowed_host_patterns": ["*.notifications.internal.example"],
+      "requires_control": ["CARD-CTL-003"]
+    }
+  },
+  "explicitly_disallowed_patterns": {
+    "raw_provider_sdk_imports": ["^import openai", "^import anthropic", "^import google\\.generativeai", "^from mistralai import"],
+    "raw_db_drivers": ["psycopg2\\.connect\\(", "pymongo\\.MongoClient\\(", "sqlalchemy\\.create_engine\\("],
+    "raw_connection_strings": ["postgres://", "mongodb://", "mysql://"],
+    "raw_http_clients_outside_allowed_hosts": ["requests\\.(get|post|put|delete)\\(", "httpx\\.(Client|AsyncClient)\\("]
+  }
+}

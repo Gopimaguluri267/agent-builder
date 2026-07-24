@@ -1,0 +1,23 @@
+vertical_id: payments
+vertical_name: "Payments"
+version: "0.0.0"
+extends: core
+status: placeholder   # not yet built out
+
+description: >
+  Placeholder for a future vertical covering payment processing, money
+  transmission, and payments infrastructure agentic systems. Not yet
+  researched. Note: PCI-DSS is already partially covered under
+  ../banking-and-capital-markets/technical-standards.md since card data
+  handling shows up there too — when building this vertical out, decide
+  whether PCI-DSS content should move here instead, or stay cross-referenced
+  from both, rather than duplicating it a third time.
+
+likely_relevant_regulators_not_yet_researched:
+  - State money transmitter licensing regimes
+  - FinCEN MSB (Money Services Business) registration requirements
+  - Card network operating rules (Visa, Mastercard) beyond PCI-DSS
+
+files: {}
+
+usecases_dir: usecases/

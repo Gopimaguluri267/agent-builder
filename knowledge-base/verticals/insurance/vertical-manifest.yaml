@@ -1,0 +1,20 @@
+vertical_id: insurance
+vertical_name: "Insurance"
+version: "0.0.0"
+extends: core
+status: placeholder   # not yet built out
+
+description: >
+  Placeholder for a future vertical covering underwriting, claims
+  processing, and policy servicing agentic systems. Not yet researched.
+  When building this out, follow the pattern established in
+  ../banking-and-capital-markets/.
+
+likely_relevant_regulators_not_yet_researched:
+  - State insurance commissioners
+  - NAIC (National Association of Insurance Commissioners) model laws
+  - NAIC Model Bulletin on AI use by insurers
+
+files: {}
+
+usecases_dir: usecases/

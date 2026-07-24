@@ -1,0 +1,3 @@
+# Usecase Template — Wealth & Asset Management (placeholder vertical)
+
+This vertical isn't built out yet — `../vertical-manifest.yaml` has no `regulatory-landscape.md`, `model-risk-management.md`, `technical-standards.md`, or `model-catalog.md`. Before bootstrapping a usecase here, build those out first, following the pattern in `../../banking-and-capital-markets/` (real research, inline citations, disclaimers, ID-prefixed entries). Once that exists, copy `../../banking-and-capital-markets/usecases/_template/` for the usecase-level bootstrap steps — the pattern is identical, only the vertical-layer files being referenced differ.
