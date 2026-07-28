@@ -64,18 +64,15 @@
   <!-- Wrap each unresolved item in <div class="abd-open-question">...</div> — never omit this section even if empty; state "None outstanding" explicitly if so. -->
   {{OPEN_QUESTIONS_HTML}}
 
-  <!-- Sign-Off section — DOC-STD-004 -->
+  <!-- Sign-Off section — DOC-STD-004, multi-approver -->
   <div class="abd-signoff {{SIGNOFF_STATE_CLASS}}">
     <h2 class="abd-section">Sign-Off</h2>
     <p class="abd-signoff-statement">{{AFFIRMATION_STATEMENT}}</p>
-    <div class="abd-signoff-fields">
-      <table>
-        <tr><td class="abd-label">Approver Name</td><td class="abd-value">{{APPROVER_NAME}}</td></tr>
-        <tr><td class="abd-label">Approver Role</td><td class="abd-value">{{APPROVER_ROLE}}</td></tr>
-        <tr><td class="abd-label">Signed At</td><td class="abd-value">{{SIGNED_AT}}</td></tr>
-        <tr><td class="abd-label">Evidence Hash</td><td class="abd-value abd-evidence-hash">{{EVIDENCE_HASH}}</td></tr>
-      </table>
-    </div>
+    <table class="abd-table abd-signoff-table">
+      <tr><th>Required Approver Role</th><th>Approver Name</th><th>Signed At</th><th>Status</th></tr>
+      {{SIGNOFF_ROWS_HTML}}
+    </table>
+    <p class="abd-evidence-hash-label">Evidence hash (shared across all approvers, computed once from this document's pending-signoff content before any signature): <span class="abd-evidence-hash">{{EVIDENCE_HASH}}</span></p>
   </div>
 
 </div>

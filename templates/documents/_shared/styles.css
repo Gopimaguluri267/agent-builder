@@ -126,7 +126,7 @@ table.abd-table th { background: var(--abd-bg-subtle); font-weight: 600; }
   border-radius: 0 4px 4px 0;
 }
 
-/* Sign-Off section — DOC-STD-004 */
+/* Sign-Off section — DOC-STD-004, multi-approver */
 .abd-signoff {
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -134,10 +134,9 @@ table.abd-table th { background: var(--abd-bg-subtle); font-weight: 600; }
 }
 .abd-signoff h2.abd-section { border-bottom-color: var(--abd-ink); color: var(--abd-ink); }
 .abd-signoff-statement { font-style: italic; margin-bottom: 1.25rem; }
-.abd-signoff-fields table { width: 100%; border-collapse: collapse; }
-.abd-signoff-fields td { padding: 0.5rem 0.5rem 0.5rem 0; border-bottom: 1px solid var(--abd-border); }
-.abd-signoff-fields td.abd-label { width: 160px; color: var(--abd-ink-soft); font-size: 0.85rem; }
-.abd-signoff-unsigned .abd-signoff-fields td.abd-value { color: var(--abd-ink-soft); font-style: italic; }
+table.abd-signoff-table tr.abd-signoff-row-pending td { color: var(--abd-ink-soft); font-style: italic; }
+table.abd-signoff-table tr.abd-signoff-row-signed td { color: var(--abd-ink); }
+.abd-evidence-hash-label { margin-top: 1rem; font-size: 0.8rem; color: var(--abd-ink-soft); }
 .abd-evidence-hash { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; color: var(--abd-ink-soft); word-break: break-all; }
 
 @media print {

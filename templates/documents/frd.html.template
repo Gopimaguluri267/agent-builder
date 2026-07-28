@@ -36,11 +36,15 @@
   <p class="abd-subtitle">Functional Requirements Document</p>
 
   <h2 class="abd-section">Use Cases</h2>
-  <!-- One abd-subsection per use case/scenario, narrative form per user role -->
+  <!-- One abd-subsection per use case/scenario: trigger, main flow, at least one Alternative Flow, at least one Exception Flow — DOC-STD-003 -->
   {{USE_CASES_HTML}}
 
   <h2 class="abd-section">Features</h2>
   {{FEATURES_HTML}}
+
+  <h2 class="abd-section">Business Rules</h2>
+  <!-- Table: Rule ID | Description | Condition | Action | Exception | Source | Applied In — DOC-STD-003. Distinct from Validation Rules below. -->
+  {{BUSINESS_RULES_HTML}}
 
   <h2 class="abd-section">Validation Rules</h2>
   <!-- Render as a table: Rule | Enforcement Point | Reference (usecase-rules.md / controls-catalog.json IDs via abd-ref) -->
@@ -54,18 +58,27 @@
   <!-- Render as a table: Data Element | Read/Write | Connector (allowlist.json ID via abd-ref) | Classification (core/pii-taxonomy.md category if applicable) -->
   {{DATA_REQUIREMENTS_HTML}}
 
-  <!-- Sign-Off section — DOC-STD-004 -->
+  <h2 class="abd-section">Security Requirements</h2>
+  <!-- Authentication / Authorization / Data Protection / Audit Trail — surfaces controls-catalog.json + pii-taxonomy.md content, doesn't invent new requirements — DOC-STD-003 -->
+  {{SECURITY_REQUIREMENTS_HTML}}
+
+  <h2 class="abd-section">Test Scenarios</h2>
+  <!-- Table: ID | Scenario | Steps | Expected Result | Traces To — functional, edge-case, and security scenarios — DOC-STD-003 -->
+  {{TEST_SCENARIOS_HTML}}
+
+  <h2 class="abd-section">Traceability Matrix</h2>
+  <!-- Table: BRD Objective | PRD Feature | FRD Use Case | Requirements | Business/Validation Rules | Test Scenarios. No orphans — DOC-STD-003 -->
+  {{TRACEABILITY_MATRIX_HTML}}
+
+  <!-- Sign-Off section — DOC-STD-004, multi-approver -->
   <div class="abd-signoff {{SIGNOFF_STATE_CLASS}}">
     <h2 class="abd-section">Sign-Off</h2>
     <p class="abd-signoff-statement">{{AFFIRMATION_STATEMENT}}</p>
-    <div class="abd-signoff-fields">
-      <table>
-        <tr><td class="abd-label">Approver Name</td><td class="abd-value">{{APPROVER_NAME}}</td></tr>
-        <tr><td class="abd-label">Approver Role</td><td class="abd-value">{{APPROVER_ROLE}}</td></tr>
-        <tr><td class="abd-label">Signed At</td><td class="abd-value">{{SIGNED_AT}}</td></tr>
-        <tr><td class="abd-label">Evidence Hash</td><td class="abd-value abd-evidence-hash">{{EVIDENCE_HASH}}</td></tr>
-      </table>
-    </div>
+    <table class="abd-table abd-signoff-table">
+      <tr><th>Required Approver Role</th><th>Approver Name</th><th>Signed At</th><th>Status</th></tr>
+      {{SIGNOFF_ROWS_HTML}}
+    </table>
+    <p class="abd-evidence-hash-label">Evidence hash (shared across all approvers, computed once from this document's pending-signoff content before any signature): <span class="abd-evidence-hash">{{EVIDENCE_HASH}}</span></p>
   </div>
 
 </div>
